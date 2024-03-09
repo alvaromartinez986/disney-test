@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { RouterProvider } from "react-router-dom";
+import { router } from "./App.routes";
+import { UserProvider } from "./Context/UserContext";
+import { CategoriesProvider } from "./Context/CategoriesContext";
+import { MoviesProvider } from "./Context/MoviesContext";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<UserProvider>
+			<CategoriesProvider>
+				<MoviesProvider>
+					<RouterProvider router={router} />
+				</MoviesProvider>
+			</CategoriesProvider>
+		</UserProvider>
+	);
 }
 
 export default App;
